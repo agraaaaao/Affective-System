@@ -1,0 +1,299 @@
+<!--Form display-->
+<div class="xcontainer">
+	<div class="fontdata">
+	  <p id="pcss" class="pcss">X</p>
+	</div>
+</div>
+  <dialog id="myFirstDialog" class="boxview" style="width:100%;height:100%;text-align:center;overflow:hidden;border:0px;">  
+	<div class="boxview_container">
+	  <iframe id="iframe" scrolling="no" src="" width="100%" height="100%" style="margin: 0 auto;overflow:auto;" ></iframe>
+    </div>
+	  <button id="hide" style="position:absolute;top:10px;right:10px;width:48px;height;48px;line-height:48px;text-align:center;">X</button>
+  </dialog>
+
+<form id="fntsubmit" class="left-panel" method="post" autocomplete="nope">
+    <div class="top-content">
+    <!--Buttons-->
+	    <input type="hidden" name="base_page" value="https://anmolgrao.com/affective-submission"></input>
+        <!--Description-->
+        <div class="description">
+	        <div class="descrip-title">Affective System</div>
+	        <div class="descripb">What is the first thing that comes to mind when you think of anger, or happiness? Usually, it is a memory of an occasion on which you felt those emotions. Emotions themselves have no form, and thus no possibility of being described.<br><br>Emotions are a strange language that is so integral to our nature, yet most of us are unable to process, comprehend or communicate effectively with it. They are highly contextual and personal, relatable only through an experience of a particular circumstance. There is no real way of sharing what it is or what it looks like. Words don’t describe emotions any more than names describe faces. Emotional terminologies essentially hold no meaning, other than being a reminder of what they evoke. There are various emotions, all neatly placed into generic categories such that they lose nuance. This fundamentally goes against the complexity of the concept.<br><br>This tool was created to express exactly that, to give back individuality to emotions, to give back power to those unable to express or identity with certain emotions through language.<br><br><em>So... what are you feeling right now?</em>
+		  </div>
+        </div>
+	</div>
+    <!--Controls-->
+    <div class="controls">
+        <!--Sliders-->
+	    <div class="sliders">
+	  
+		    <!--CONNECTION-->
+		    <div class="settings">
+	  		<input type="range" min="-100" max="100" step="1" value="0" id="cnct" name="cnct">
+		    </div>
+		    <div class="settings gap5">
+				<label for="cnct" class="left">WITHDRAWN</label>
+	  			<label for="cnct" class="right">CONNECTED</label>
+		    </div>
+	  
+		    <!--VOLUME-->
+		    <div class="settings">
+    			<input type="range" min="-100" max="100" step="1" value="0" id="volm" name="volm">
+		    </div>
+		    <div class="settings gap5">
+			  <label for="volm" class="left">QUIET</label>
+			  <label for="volm" class="right">LOUD</label>
+		    </div>
+	  
+		    <!--VOLUME-->
+		    <div class="settings">
+    			<input type="range" min="-100" max="100" step="1" value="0" id="proxy" name="proxy">
+		    </div>
+		    <div class="settings gap5">
+			  <label for="proxy" class="left">EMBRACING</label>
+			  <label for="proxy" class="right">REJECTING</label>
+		    </div>
+	  
+		    <!--ISOLATION-->
+		    <div class="settings">
+	    		<input type="range" min="1" max="4" step="1" value="0" id="isol" name="isol">
+		    </div>
+		    <div class="settings gap5">
+				<label for="isol" class="left">INTEGRATED</label>
+				<label for="isol"  class="right">ISOLATED</label>
+		    </div>
+        <!--Buttons-->
+        </div>
+		<div class="buttonpanel">  
+		  <div class="buttons order1">
+			<input type="button" id="outline" name="outline" value="OUTLINE">
+			<input type="button" id="theme" name="theme" value="INVERT COLORS">
+		  </div>
+
+		  <div class="buttons order1">
+			<input type="reset" id="reset" name="reset" value="RESET VALUES">
+			<input type="submit" id="submit" name="submit" value="SUBMIT EMOTIONS">
+		  </div>
+		  <div class="buttons order1" >
+			<input type="button" id="seeall" value="SEE ALL SUBMISSIONS">
+		  </div>
+		  <div class="buttons order1">
+			<input type="button" id="downloadspecimen" value="DOWNLOAD SPECIMEN">
+		  </div>
+	  </div>
+	  </div>
+</form>
+
+
+<script type="text/javascript">
+(function($){ 
+  var dialog;
+  $("#chk").change(function(){
+	$(this).prop("checked", true);
+  });
+  $("#cnct").bind("touchmove",function(e){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--CNCT", newval);
+  });
+  $("#volm").bind("touchmove",function(e){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--VOLM", newval);
+  });
+  $("#proxy").bind("touchmove",function(e){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--PROXY", newval);
+  });
+  $("#isol").bind("touchmove",function(e){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--ISOL", newval);
+  });
+  
+  $("#cnct").mousemove(function(){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--CNCT", newval);
+  });
+  $("#volm").mousemove(function(){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--VOLM", newval);
+  });
+  $("#proxy").mousemove(function(){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--PROXY", newval);
+  });
+  $("#isol").mousemove(function(){
+     var newval=$(this).val();
+     $("body").get(0).style.setProperty("--ISOL", newval);
+  });
+
+  $("input[type='reset']").on('click', function(e)
+  {
+   		setTimeout(function() {
+        $("body").get(0).style.setProperty("--CNCT", $("#cnct").val());
+        $("body").get(0).style.setProperty("--VOLM", $("#volm").val());
+        $("body").get(0).style.setProperty("--PROXY", $("#proxy").val());
+        $("body").get(0).style.setProperty("--ISOL", $("#isol").val());
+    },1);
+  });
+  function drawBoard(context)
+  {
+	var bw = 1200;
+// Box height
+	var bh = 1200;
+	// Padding
+	var p = 10;
+    for (var x = 0; x <= bw; x += 40) {
+        context.moveTo(0.5 + x + p, p);
+        context.lineTo(0.5 + x + p, bh + p);
+    }
+
+    for (var x = 0; x <= bh; x += 40) {
+        context.moveTo(p, 0.5 + x + p);
+        context.lineTo(bw + p, 0.5 + x + p);
+    }
+    context.strokeStyle = "gray";
+    context.stroke();
+  }
+
+  function DrawText()
+  {
+	var canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+
+  canvas.width = 1200;
+  canvas.height = 1200;
+  drawBoard	(ctx);
+
+  ctx.fillStyle = "#333333";
+  ctx.font = '1200px Affective System';
+  ctx.textBaseline = 'middle';
+  var textString = "X";
+  textWidth = ctx.measureText(textString ).width;
+  ctx.fillText(textString , (canvas.width/2) - (textWidth / 2), 600);
+  }
+   function SetTheme(tName)
+  {
+	var ttName="";
+	var ttOutline="";
+	if(tName=="light") {ttName="light";ttOutline="";}
+	if(tName=="dark") {ttName="dark";ttOutline="";}
+	if(tName=="lightoutline") {ttName="light";ttOutline="outline";}
+	if(tName=="darkoutline") {ttName="dark";ttOutline="outline";}
+	localStorage.setItem('theme',ttName);
+	localStorage.setItem('outline',ttOutline);
+	//document.documentElement.className=ttName;
+	switch(tName)
+	{
+	  case "light":
+        $("body").get(0).style.setProperty("--primary", "#000000");
+        $("body").get(0).style.setProperty("--bg", "#EAEAEA");
+        $("body").get(0).style.setProperty("--tertiary","#C5C5C5");
+        $("body").get(0).style.setProperty("--stroke","#000000");
+        $("body").get(0).style.setProperty("--primaryfont","#000000");
+        $("body").get(0).style.setProperty("--outlinebg","#C5C5C5");
+        $("body").get(0).style.setProperty("--outlinefg","#000000");
+		break;
+	  case "lightoutline":
+        $("body").get(0).style.setProperty("--primary", "#000000");
+        $("body").get(0).style.setProperty("--bg", "#EAEAEA");
+        $("body").get(0).style.setProperty("--tertiary","#C5C5C5");
+        $("body").get(0).style.setProperty("--stroke","#000000");
+        $("body").get(0).style.setProperty("--primaryfont","#EAEAEA");
+        $("body").get(0).style.setProperty("--outlinebg","#000000");
+        $("body").get(0).style.setProperty("--outlinefg","#EAEAEA");
+		break;
+	  case "dark":
+        $("body").get(0).style.setProperty("--primary", "#EAEAEA");
+        $("body").get(0).style.setProperty("--bg", "#000000");
+        $("body").get(0).style.setProperty("--tertiary","#252525");
+        $("body").get(0).style.setProperty("--stroke","#EAEAEA");
+        $("body").get(0).style.setProperty("--primaryfont","#EAEAEA");
+        $("body").get(0).style.setProperty("--outlinebg","#EAEAEA");
+        $("body").get(0).style.setProperty("--outlinefg","#000000");
+		break;
+	  case "darkoutline":
+        $("body").get(0).style.setProperty("--primary", "#EAEAEA");
+        $("body").get(0).style.setProperty("--bg", "#000000");
+        $("body").get(0).style.setProperty("--tertiary","#252525");
+        $("body").get(0).style.setProperty("--stroke","#EAEAEA");
+        $("body").get(0).style.setProperty("--primaryfont","#000000");
+        $("body").get(0).style.setProperty("--outlinebg","#252525");
+        $("body").get(0).style.setProperty("--outlinefg","#EAEAEA");
+		break;
+	}
+  }
+  
+  $("#theme").bind("click",function()
+  {
+	th="";
+	themeName=localStorage.getItem('theme');
+	outline=localStorage.getItem('outline');
+	if(themeName==null) th="light"; else th=themeName;
+	if(outline==null) outline="";
+	
+	if(themeName=="light") 
+	  themeName="dark"+outline;
+	else
+	  themeName="light"+outline;
+	SetTheme(themeName);
+  });
+    $("#outline").bind("click",function()
+  {
+	th="";
+	themeName=localStorage.getItem('theme');
+	outline=localStorage.getItem('outline');
+	if(themeName==null) th="light"; else th=themeName;
+	if(outline==null) outline="";
+	
+	if(outline=="") 
+	  th=th+"outline";
+	SetTheme(th);
+  });
+  
+  function myInitFunction()
+  {
+	setTimeout(function() {
+	  	var th="";
+		themeName=localStorage.getItem('theme');
+	    outline=localStorage.getItem('outline');
+		if(themeName==null) th="light"; else th=themeName;
+	  	if(outline==null)
+			SetTheme(th);
+	    else
+		  SetTheme(th+outline);
+	},1000);
+  }
+  function popup() 
+  {
+	//https://anmolgrao.com/affective-average
+	$("#iframe").attr("src","https://anmolgrao.com/affective-average");
+    dialog = document.getElementById('myFirstDialog');    
+	dialog.showModal();   
+  }
+  $('#hide').bind("click",function(){
+		$("#iframe").attr("src","");
+        dialog.close();    
+  });    
+  
+  $("#fntsubmit").submit(function(e) 
+  {
+		  //prevent Default functionality
+		  e.preventDefault();
+		  $.ajax({
+				  type: 'post',
+				  url: "font-post",
+				  cache: false,
+				  dataType : "text",
+				  data: $(this).serialize(),
+				  success: function(data) {
+					  popup();
+				  },
+			error: function (xhr, ajaxOptions, thrownError) {
+			 alert(thrownError);
+				}		
+		  });
+  });
+
+  window.addEventListener("load", myInitFunction);
+})(jQuery);
+</script>
+
